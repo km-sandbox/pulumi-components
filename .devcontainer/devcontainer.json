@@ -14,5 +14,5 @@
     },
     "ghcr.io/devcontainers-contrib/features/pulumi:1": {}
   },
-  "postCreateCommand": "npm install -g typescript@5.1.6"
+  "onCreateCommand": "npm install -g typescript@5.1.6 && yarn install"
 }
