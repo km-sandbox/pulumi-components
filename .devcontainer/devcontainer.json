@@ -1,0 +1,18 @@
+{
+  "name": "Node.js & TypeScript",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18.18.0"
+    },
+    "ghcr.io/dhoeric/features/google-cloud-cli:1": {
+      "installGkeGcloudAuthPlugin": true
+    },
+    "ghcr.io/devcontainers/features/azure-cli:1": {
+      "installBicep": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/pulumi:1": {}
+  },
+  "postCreateCommand": "npm install -g typescript@5.1.6"
+}
