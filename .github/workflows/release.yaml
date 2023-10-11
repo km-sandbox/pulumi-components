@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  workflow_run:
+    workflows: ["Lint"]
+    branches: [main]
+    types:
+      - completed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Fail if Lint Workflow failed
+        if: github.event.workflow_run.conclusion != 'success'
+        run: exit 1
+
+      - name: Fetch Git repository and checkout
+        uses: "actions/checkout@v4"
+
+      - name: Setup Node LTS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.18.0
+          cache: yarn
+
+      - name: Override default OS Typescript version
+        run: npm install -g typescript@5.1.6
+
+      - name: Installing dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Dry Run Release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          dry_run: true
+          branches: |
+            [
+              'main',
+            ]
+
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branches: |
+            [
+              'main',
+            ]

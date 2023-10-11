@@ -1,0 +1,28 @@
+{
+  "name": "pulumi-components",
+  "version": "0.0.0-development",
+  "main": "src/index.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "@types/node": "^16",
+    "gts": "^5.2.0",
+    "semantic-release": "^22.0.5",
+    "typescript": "5.1.6"
+  },
+  "dependencies": {
+    "@pulumi/google-native": "^0.31.1",
+    "@pulumi/pulumi": "^3.0.0"
+  },
+  "scripts": {
+    "lint": "gts lint",
+    "type-check": "tsc --noEmit",
+    "clean": "gts clean",
+    "fix": "gts fix",
+    "prepare": "yarn run compile",
+    "pretest": "yarn run compile",
+    "posttest": "yarn run lint",
+    "compile": "tsc"
+  }
+}
