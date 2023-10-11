@@ -1,1 +1,1 @@
-export * from './containerRegistry';
+export * as containerRegistry from './containerRegistry';
