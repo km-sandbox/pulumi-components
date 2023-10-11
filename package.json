@@ -1,5 +1,5 @@
 {
-  "name": "pulumi-components",
+  "name": "@km-sandbox/pulumi-components",
   "version": "0.0.0-development",
   "main": "src/index.ts",
   "publishConfig": {
