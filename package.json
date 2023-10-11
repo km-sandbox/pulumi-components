@@ -5,6 +5,9 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "devDependencies": {
     "@types/node": "^16",
     "gts": "^5.2.0",
@@ -20,9 +23,6 @@
     "type-check": "tsc --noEmit",
     "clean": "gts clean",
     "fix": "gts fix",
-    "prepare": "yarn run compile",
-    "pretest": "yarn run compile",
-    "posttest": "yarn run lint",
-    "compile": "tsc"
+    "build": "tsc"
   }
 }
