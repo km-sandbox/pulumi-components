@@ -1,2 +1,2 @@
-export * as compute from './compute';
-export * as storage from './storage';
+export * from './compute';
+export * from './storage';

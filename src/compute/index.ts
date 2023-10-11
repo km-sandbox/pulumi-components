@@ -1,1 +1,1 @@
-export * as kubernetesCluster from './kubernetesCluster';
+export * from './kubernetesCluster';
