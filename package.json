@@ -2,7 +2,8 @@
   "name": "@km-sandbox/pulumi-components",
   "version": "0.0.0-development",
   "repository":"https://github.com/km-sandbox/pulumi-components",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
