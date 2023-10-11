@@ -2,17 +2,14 @@
   "name": "@km-sandbox/pulumi-components",
   "version": "0.0.0-development",
   "repository":"https://github.com/km-sandbox/pulumi-components",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "files": [
-    "dist/**/*"
+    "**/*"
   ],
-  "exports": {
-    ".": "./dist/*"
-  },
   "devDependencies": {
     "@types/node": "^16",
     "gts": "^5.2.0",
