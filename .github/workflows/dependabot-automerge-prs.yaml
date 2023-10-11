@@ -1,11 +1,11 @@
-name: Dendabot Automerge PRs
+name: Dependabot Automerge PRs
 on:
   pull_request:
     branches:
       - main
 
 jobs:
-  automerge:
+  dependabot-automerge-prs:
     runs-on: ubuntu-latest
 
     permissions:
