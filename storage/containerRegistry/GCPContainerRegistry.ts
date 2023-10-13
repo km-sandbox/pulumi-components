@@ -8,7 +8,10 @@ export class GCPContainerRegistry extends ContainerRegistryBase {
 
   constructor(config: ContainerRegistryConfig) {
     super();
-    this.resource = new Repository(this.getFullName(config.name), {
+
+    const fullName = this.getFullName(config.name);
+    this.resource = new Repository(fullName, {
+      repositoryId: fullName,
       project: config.project,
       location: config.location,
       format: 'DOCKER',
