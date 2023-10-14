@@ -1,0 +1,1 @@
+export {ProviderConfig} from './Config';
