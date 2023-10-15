@@ -1,9 +1,9 @@
 import {ProviderConfig} from './interfaces';
 
-export type EnvConfig = Record<string, ProviderConfig>;
-export type EnvConfigMap = Record<string, EnvConfig>;
+export type EnvProviderConfig = Record<string, ProviderConfig>;
+export type EnvProviderConfigMap = Record<string, EnvProviderConfig>;
 
-const DevConfig: EnvConfig = {
+const DevProviderConfig: EnvProviderConfig = {
   gcp: {
     project: 'km-sandbox1',
     location: 'us-east1',
@@ -13,6 +13,6 @@ const DevConfig: EnvConfig = {
   },
 };
 
-export const AllEnvConfigMap: EnvConfigMap = {
-  dev: DevConfig,
+export const AllEnvProviderConfigMap: EnvProviderConfigMap = {
+  dev: DevProviderConfig,
 };
