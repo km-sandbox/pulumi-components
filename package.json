@@ -1,7 +1,7 @@
 {
   "name": "@km-sandbox/pulumi-components",
   "version": "0.0.0-development",
-  "repository":"https://github.com/km-sandbox/pulumi-components",
+  "repository": "https://github.com/km-sandbox/pulumi-components",
   "main": "index.js",
   "types": "index.d.ts",
   "publishConfig": {
@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "@pulumi/google-native": "^0.31.1",
-    "@pulumi/pulumi": "^3.88.1"
+    "@pulumi/kubernetes": "^4.4.0",
+    "@pulumi/pulumi": "^3.88.1",
+    "axios": "^1.5.1"
   },
   "scripts": {
     "lint": "gts lint",

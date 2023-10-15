@@ -1,7 +1,6 @@
 {
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#0D2E51",
-        "titleBar.activeBackground": "#124171",
-        "titleBar.activeForeground": "#F7FAFE"
-    }
+    "conventionalCommits.scopes": [
+        "compute/kubernetesCluster",
+        "compute/kubernetesManifest"
+    ]
 }
