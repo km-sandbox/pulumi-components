@@ -1,5 +1,6 @@
 export interface KubernetesConfig {
   releaseChannel: string;
+  autopilot: boolean;
 }
 
 export interface ProviderConfig {

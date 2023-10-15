@@ -9,6 +9,7 @@ const DevProviderConfig: EnvProviderConfig = {
     location: 'us-east1',
     kubernetes: {
       releaseChannel: 'REGULAR',
+      autopilot: true,
     },
   },
 };

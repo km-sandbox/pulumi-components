@@ -4,4 +4,5 @@ export interface KubernetesClusterConfig {
   environment: string;
   location: string;
   releaseChannel: string;
+  autopilot: boolean;
 }

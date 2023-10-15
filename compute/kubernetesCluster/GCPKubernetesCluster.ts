@@ -18,7 +18,7 @@ export class GCPKubernetesCluster extends KubernetesClusterBase {
       releaseChannel: {
         channel: config.releaseChannel as ReleaseChannelChannel,
       },
-      autopilot: {enabled: true},
+      autopilot: {enabled: config.autopilot},
       resourceLabels: {
         app: config.name,
         env: config.environment,
