@@ -1,2 +1,2 @@
 export {ProviderConfig} from './interfaces';
-export {EnvProvidersConfig} from './ProvidersConfig';
+export {EnvConfig, EnvConfigMap, AllEnvConfigMap} from './ProvidersConfig';
