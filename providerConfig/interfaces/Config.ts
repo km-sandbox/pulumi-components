@@ -1,10 +1,10 @@
 export interface KubernetesConfig {
-  releaseChannel: string;
-  autopilot: boolean;
+  readonly releaseChannel: string;
+  readonly autopilot: boolean;
 }
 
 export interface ProviderConfig {
-  project: string;
-  location: string;
-  kubernetes: KubernetesConfig;
+  readonly project: string;
+  readonly location: string;
+  readonly kubernetes: KubernetesConfig;
 }

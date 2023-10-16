@@ -1,6 +1,6 @@
 export interface ContainerRegistryConfig {
-  project: string;
-  name: string;
-  environment: string;
-  location: string;
+  readonly project: string;
+  readonly name: string;
+  readonly environment: string;
+  readonly location: string;
 }

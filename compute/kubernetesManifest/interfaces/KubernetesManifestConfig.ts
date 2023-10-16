@@ -1,10 +1,9 @@
-import * as k8s from '@pulumi/kubernetes';
-
 export interface KubernetesManifestConfig {
-  project: string;
-  name: string;
-  environment: string;
-  location: string;
+  readonly project: string;
+  readonly name: string;
+  readonly environment: string;
+  readonly location: string;
 
-  k8sProvider: k8s.Provider;
+  readonly clusterName: string;
+  readonly kubeConfig: Promise<string>;
 }

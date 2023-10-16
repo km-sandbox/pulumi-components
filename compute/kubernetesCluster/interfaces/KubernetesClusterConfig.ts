@@ -1,8 +1,8 @@
 export interface KubernetesClusterConfig {
-  project: string;
-  name: string;
-  environment: string;
-  location: string;
-  releaseChannel: string;
-  autopilot: boolean;
+  readonly project: string;
+  readonly name: string;
+  readonly environment: string;
+  readonly location: string;
+  readonly releaseChannel: string;
+  readonly autopilot: boolean;
 }
