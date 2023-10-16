@@ -26,9 +26,21 @@ export class GCPKubernetesCluster extends AbstractKubernetesCluster {
     });
   }
 
+  public get name(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.resource.name.apply((name: string) => {
+        if (name) {
+          resolve(name);
+        } else {
+          reject(new Error('Name is undefined.'));
+        }
+      });
+    });
+  }
+
   public async getKubeConfig(): Promise<string> {
     return new Promise((resolve, reject) => {
-      this.resource.getKubeconfig().apply(kubeconfig => {
+      this.resource.getKubeconfig().apply((kubeconfig: string) => {
         if (kubeconfig) {
           resolve(kubeconfig);
         } else {

@@ -16,9 +16,17 @@ export abstract class AbstractKubernetesManifest extends AbstractResource {
     });
   }
 
+  public get name(): Promise<string> {
+    return new Promise(resolve => {
+      resolve(this.getFullName(this.config.name));
+    });
+  }
+
   protected applyYAML(yamlData: string): k8s.yaml.ConfigGroup {
+    const name = this.getFullName(this.config.name);
+
     return new k8s.yaml.ConfigGroup(
-      `${this.config.name}-${this.nameSuffix}`,
+      name,
       {yaml: yamlData},
       {provider: this.provider}
     );

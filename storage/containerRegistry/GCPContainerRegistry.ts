@@ -21,4 +21,16 @@ export class GCPContainerRegistry extends AbstractContainerRegistry {
       },
     });
   }
+
+  public get name(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.resource.name.apply((name: string) => {
+        if (name) {
+          resolve(name);
+        } else {
+          reject(new Error('Name is undefined.'));
+        }
+      });
+    });
+  }
 }
