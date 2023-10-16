@@ -1,1 +1,1 @@
-export {ResourceBase} from './ResourceBase';
+export {AbstractResource as AbstractResource} from './AbstractResource';

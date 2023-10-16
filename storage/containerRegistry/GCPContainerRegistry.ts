@@ -1,9 +1,9 @@
 import {Repository} from '@pulumi/google-native/artifactregistry/v1beta2';
 
 import {ContainerRegistryConfig} from './interfaces';
-import {ContainerRegistryBase} from './ContainerRegistryBase';
+import {AbstractContainerRegistry} from './AbstractContainerRegistry';
 
-export class GCPContainerRegistry extends ContainerRegistryBase {
+export class GCPContainerRegistry extends AbstractContainerRegistry {
   public resource: Repository;
 
   constructor(config: ContainerRegistryConfig) {

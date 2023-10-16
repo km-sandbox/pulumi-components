@@ -1,4 +1,4 @@
-export class ResourceBase {
+export abstract class AbstractResource {
   protected nameSuffix = 'suffix';
 
   protected getFullName(name: string): string {

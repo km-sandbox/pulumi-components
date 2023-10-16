@@ -4,9 +4,9 @@ import {
 } from '@pulumi/google-native/container/v1beta1';
 
 import {KubernetesClusterConfig} from './interfaces';
-import {KubernetesClusterBase} from './KubernetesClusterBase';
+import {AbstractKubernetesCluster} from './AbstractKubernetesCluster';
 
-export class GCPKubernetesCluster extends KubernetesClusterBase {
+export class GCPKubernetesCluster extends AbstractKubernetesCluster {
   public resource: Cluster;
 
   constructor(config: KubernetesClusterConfig) {
