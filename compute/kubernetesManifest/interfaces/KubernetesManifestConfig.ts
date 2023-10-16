@@ -5,5 +5,5 @@ export interface KubernetesManifestConfig {
   readonly location: string;
 
   readonly clusterName: string;
-  readonly kubeConfig: Promise<string>;
+  readonly kubeConfig: string;
 }
