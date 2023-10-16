@@ -7,7 +7,7 @@ import {KubernetesClusterConfig} from './interfaces';
 import {AbstractKubernetesCluster} from './AbstractKubernetesCluster';
 
 export class GCPKubernetesCluster extends AbstractKubernetesCluster {
-  public resource: Cluster;
+  protected resource: Cluster;
 
   constructor(config: KubernetesClusterConfig) {
     super();
@@ -23,6 +23,18 @@ export class GCPKubernetesCluster extends AbstractKubernetesCluster {
         app: config.name,
         env: config.environment,
       },
+    });
+  }
+
+  public async getKubeConfig(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      this.resource.getKubeconfig().apply(kubeconfig => {
+        if (kubeconfig) {
+          resolve(kubeconfig);
+        } else {
+          reject(new Error('Kubeconfig is undefined.'));
+        }
+      });
     });
   }
 }

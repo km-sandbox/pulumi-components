@@ -5,7 +5,7 @@ import {AbstractKubernetesManifest} from './AbstractKubernetesManifest';
 import {KubernetesManifestFromURLConfig} from './interfaces';
 
 export class KubernetesManifestFromURL extends AbstractKubernetesManifest {
-  public resource!: k8s.yaml.ConfigGroup;
+  protected resource!: k8s.yaml.ConfigGroup;
 
   constructor(public config: KubernetesManifestFromURLConfig) {
     super(config);

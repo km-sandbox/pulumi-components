@@ -4,9 +4,8 @@ import {AbstractResource} from '../../common/resource';
 import {KubernetesManifestConfig} from './interfaces';
 
 export abstract class AbstractKubernetesManifest extends AbstractResource {
-  readonly nameSuffix: string = 'manifest';
+  protected nameSuffix = 'manifest';
   protected config: KubernetesManifestConfig;
-  abstract resource: k8s.yaml.ConfigGroup;
 
   constructor(config: KubernetesManifestConfig) {
     super();

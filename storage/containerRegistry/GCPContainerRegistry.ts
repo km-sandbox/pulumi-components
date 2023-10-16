@@ -4,7 +4,7 @@ import {ContainerRegistryConfig} from './interfaces';
 import {AbstractContainerRegistry} from './AbstractContainerRegistry';
 
 export class GCPContainerRegistry extends AbstractContainerRegistry {
-  public resource: Repository;
+  protected resource: Repository;
 
   constructor(config: ContainerRegistryConfig) {
     super();
