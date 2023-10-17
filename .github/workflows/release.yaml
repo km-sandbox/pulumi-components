@@ -16,6 +16,6 @@ jobs:
       - name: Fetch Git repository and checkout
         uses: "actions/checkout@v4"
 
-      - uses: ./.github/actions/composite-setup
-      - uses: ./.github/actions/composite-lint
-      - uses: ./.github/actions/composite-release
+      - uses: ./.github/actions/setup
+      - uses: ./.github/actions/lint
+      - uses: ./.github/actions/release
