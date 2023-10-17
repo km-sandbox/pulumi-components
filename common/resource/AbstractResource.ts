@@ -1,3 +1,5 @@
+import {Output} from '@pulumi/pulumi';
+
 export abstract class AbstractResource {
   protected nameSuffix = 'suffix';
 
@@ -6,4 +8,19 @@ export abstract class AbstractResource {
   }
 
   abstract get name(): Promise<string>;
+
+  protected resolveResourceOutputProperty<T>(
+    property: string,
+    resourceOutput: Output<T>
+  ): Promise<T> {
+    return new Promise((resolve, reject) => {
+      resourceOutput.apply((value: T) => {
+        if (value) {
+          resolve(value);
+        } else {
+          reject(new Error(`${property} is undefined.`));
+        }
+      });
+    });
+  }
 }

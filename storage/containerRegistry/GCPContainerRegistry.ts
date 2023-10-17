@@ -8,29 +8,30 @@ export class GCPContainerRegistry extends AbstractContainerRegistry {
 
   constructor(config: ContainerRegistryConfig) {
     super();
+    this.resource = this.createRepositoryResource(config);
+  }
 
+  private createRepositoryResource(
+    config: ContainerRegistryConfig
+  ): Repository {
     const fullName = this.getFullName(config.name);
-    this.resource = new Repository(fullName, {
+    return new Repository(fullName, {
       repositoryId: fullName,
       project: config.project,
       location: config.location,
       format: 'DOCKER',
-      labels: {
-        app: config.name,
-        env: config.environment,
-      },
+      labels: this.buildLabels(config),
     });
   }
 
+  private buildLabels(config: ContainerRegistryConfig): Record<string, string> {
+    return {
+      app: config.name,
+      env: config.environment,
+    };
+  }
+
   public get name(): Promise<string> {
-    return new Promise((resolve, reject) => {
-      this.resource.name.apply((name: string) => {
-        if (name) {
-          resolve(name);
-        } else {
-          reject(new Error('Name is undefined.'));
-        }
-      });
-    });
+    return this.resolveResourceOutputProperty('Name', this.resource.name);
   }
 }

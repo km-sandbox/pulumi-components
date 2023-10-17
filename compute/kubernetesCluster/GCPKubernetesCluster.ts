@@ -11,42 +11,43 @@ export class GCPKubernetesCluster extends AbstractKubernetesCluster {
 
   constructor(config: KubernetesClusterConfig) {
     super();
-    this.resource = new Cluster(this.getFullName(config.name), {
+    this.resource = this.createClusterResource(config);
+  }
+
+  private createClusterResource(config: KubernetesClusterConfig): Cluster {
+    const fullName = this.getFullName(config.name);
+    const parentResource = this.buildParentResource(config);
+    return new Cluster(fullName, {
       project: config.project,
-      parent: `projects/${config.environment}/locations/${config.location}`,
+      parent: parentResource,
       location: config.location,
-      releaseChannel: {
-        channel: config.releaseChannel as ReleaseChannelChannel,
-      },
+      releaseChannel: {channel: config.releaseChannel as ReleaseChannelChannel},
       autopilot: {enabled: config.autopilot},
-      resourceLabels: {
-        app: config.name,
-        env: config.environment,
-      },
+      resourceLabels: this.buildResourceLabels(config),
     });
+  }
+
+  private buildParentResource(config: KubernetesClusterConfig): string {
+    return `projects/${config.environment}/locations/${config.location}`;
+  }
+
+  private buildResourceLabels(
+    config: KubernetesClusterConfig
+  ): Record<string, string> {
+    return {
+      app: config.name,
+      env: config.environment,
+    };
   }
 
   public get name(): Promise<string> {
-    return new Promise((resolve, reject) => {
-      this.resource.name.apply((name: string) => {
-        if (name) {
-          resolve(name);
-        } else {
-          reject(new Error('Name is undefined.'));
-        }
-      });
-    });
+    return this.resolveResourceOutputProperty('Name', this.resource.name);
   }
 
-  public async getKubeConfig(): Promise<string> {
-    return new Promise((resolve, reject) => {
-      this.resource.getKubeconfig().apply((kubeconfig: string) => {
-        if (kubeconfig) {
-          resolve(kubeconfig);
-        } else {
-          reject(new Error('Kubeconfig is undefined.'));
-        }
-      });
-    });
+  public getKubeConfig(): Promise<string> {
+    return this.resolveResourceOutputProperty(
+      'Kubeconfig',
+      this.resource.getKubeconfig()
+    );
   }
 }

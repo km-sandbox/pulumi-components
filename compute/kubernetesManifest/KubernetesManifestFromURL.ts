@@ -9,14 +9,20 @@ export class KubernetesManifestFromURL extends AbstractKubernetesManifest {
 
   constructor(public config: KubernetesManifestFromURLConfig) {
     super(config);
+    this.fetchAndApplyYAML();
+  }
 
-    axios
-      .get(this.config.yamlURL!)
-      .then((yamlData: AxiosResponse) => {
-        this.resource = this.applyYAML(yamlData.data);
-      })
-      .catch((error: Error) => {
-        console.error('Failed to fetch YAML: ', error);
-      });
+  private async fetchAndApplyYAML(): Promise<void> {
+    try {
+      const yamlData = await this.fetchYAMLFromURL(this.config.yamlURL!);
+      this.resource = this.applyYAML(yamlData);
+    } catch (error) {
+      console.error('Failed to fetch YAML: ', error);
+    }
+  }
+
+  private async fetchYAMLFromURL(url: string): Promise<string> {
+    const response: AxiosResponse = await axios.get(url);
+    return response.data;
   }
 }

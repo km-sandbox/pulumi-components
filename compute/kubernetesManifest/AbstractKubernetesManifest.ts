@@ -6,14 +6,11 @@ import {KubernetesManifestConfig} from './interfaces';
 export abstract class AbstractKubernetesManifest extends AbstractResource {
   protected readonly nameSuffix = 'manifest';
   protected readonly config: KubernetesManifestConfig;
-  protected readonly provider: k8s.Provider;
+  private static providers: {[key: string]: k8s.Provider} = {};
 
   constructor(config: KubernetesManifestConfig) {
     super();
     this.config = config;
-    this.provider = new k8s.Provider(config.clusterName, {
-      kubeconfig: config.kubeConfig,
-    });
   }
 
   public get name(): Promise<string> {
@@ -22,13 +19,40 @@ export abstract class AbstractKubernetesManifest extends AbstractResource {
     });
   }
 
+  protected getProviderAndCreateItIfNotExists(): k8s.Provider {
+    const key = this.config.clusterName;
+
+    if (this.isProviderExists(key)) {
+      return this.getExistingProvider(key);
+    }
+
+    return this.createAndStoreProvider(key, this.config.kubeConfig);
+  }
+
+  private isProviderExists(key: string): boolean {
+    return Boolean(AbstractKubernetesManifest.providers[key]);
+  }
+
+  private getExistingProvider(key: string): k8s.Provider {
+    return AbstractKubernetesManifest.providers[key];
+  }
+
+  private createAndStoreProvider(
+    key: string,
+    kubeConfig: string
+  ): k8s.Provider {
+    const provider = new k8s.Provider(key, {kubeconfig: kubeConfig});
+    AbstractKubernetesManifest.providers[key] = provider;
+    return provider;
+  }
+
   protected applyYAML(yamlData: string): k8s.yaml.ConfigGroup {
     const name = this.getFullName(this.config.name);
 
     return new k8s.yaml.ConfigGroup(
       name,
       {yaml: yamlData},
-      {provider: this.provider}
+      {provider: this.getProviderAndCreateItIfNotExists()}
     );
   }
 }
