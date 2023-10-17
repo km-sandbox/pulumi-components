@@ -21,4 +21,5 @@ jobs:
       - name: Lint
         uses: ./.github/actions/lint
 
-      - uses: fastify/github-action-merge-dependabot@v3
+      - name: Merge Dependabot PRs
+        uses: fastify/github-action-merge-dependabot@v3
