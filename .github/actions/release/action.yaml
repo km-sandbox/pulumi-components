@@ -1,9 +1,11 @@
 name: Release
+description: Release Action
 runs:
   using: "composite"
   steps:
     - name: Build
       run: yarn build
+      shell: bash
 
     - name: Dry Run Release
       uses: cycjimmy/semantic-release-action@v4
