@@ -13,4 +13,10 @@ jobs:
       contents: write
 
     steps:
+      - name: Fetch Git repository and checkout
+        uses: "actions/checkout@v4"
+
+      - uses: ./.github/actions/composite-setup
+      - uses: ./.github/actions/composite-lint
+
       - uses: fastify/github-action-merge-dependabot@v3

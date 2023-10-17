@@ -1,0 +1,29 @@
+name: Release
+runs:
+  using: composite
+  steps:
+    - name: Build
+      run: yarn build
+
+    - name: Dry Run Release
+      uses: cycjimmy/semantic-release-action@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        dry_run: true
+        branches: |
+          [
+            'main',
+          ]
+
+    - name: Release
+      uses: cycjimmy/semantic-release-action@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        branches: |
+          [
+            'main',
+          ]

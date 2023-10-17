@@ -1,0 +1,9 @@
+name: Lint
+runs:
+  using: composite
+  steps:
+    - name: Linting
+      run: yarn lint
+
+    - name: Type Checking
+      run: yarn type-check
