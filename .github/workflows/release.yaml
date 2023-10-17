@@ -16,8 +16,11 @@ jobs:
       - name: Fetch Git repository and checkout
         uses: "actions/checkout@v4"
 
-      - uses: ./.github/actions/setup
-      - uses: ./.github/actions/lint
-      - uses: ./.github/actions/release
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Lint
+        uses: ./.github/actions/lint
+      - name: Release
+        uses: ./.github/actions/release
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
