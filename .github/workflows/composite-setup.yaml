@@ -1,6 +1,6 @@
 name: Setup
 runs:
-  using: composite
+  using: "composite"
   steps:
     - name: Setup Node LTS
       uses: actions/setup-node@v3

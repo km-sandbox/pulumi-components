@@ -1,6 +1,6 @@
 name: Lint
 runs:
-  using: composite
+  using: "composite"
   steps:
     - name: Linting
       run: yarn lint

@@ -1,6 +1,6 @@
 name: Release
 runs:
-  using: composite
+  using: "composite"
   steps:
     - name: Build
       run: yarn build
