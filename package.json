@@ -19,7 +19,7 @@
   "dependencies": {
     "@pulumi/google-native": "^0.31.1",
     "@pulumi/kubernetes": "^4.5.0",
-    "@pulumi/pulumi": "^3.89.0",
+    "@pulumi/pulumi": "^3.90.0",
     "axios": "^1.5.1",
     "rimraf": "^5.0.5"
   },
