@@ -19,16 +19,6 @@ export abstract class AbstractKubernetesManifest extends AbstractResource {
     });
   }
 
-  protected getProviderAndCreateItIfNotExists(): k8s.Provider {
-    const key = this.config.clusterName;
-
-    if (this.isProviderExists(key)) {
-      return this.getExistingProvider(key);
-    }
-
-    return this.createAndStoreProvider(key, this.config.kubeConfig);
-  }
-
   private isProviderExists(key: string): boolean {
     return Boolean(AbstractKubernetesManifest.providers[key]);
   }
@@ -44,6 +34,16 @@ export abstract class AbstractKubernetesManifest extends AbstractResource {
     const provider = new k8s.Provider(key, {kubeconfig: kubeConfig});
     AbstractKubernetesManifest.providers[key] = provider;
     return provider;
+  }
+
+  protected getProviderAndCreateItIfNotExists(): k8s.Provider {
+    const key = this.config.clusterName;
+
+    if (this.isProviderExists(key)) {
+      return this.getExistingProvider(key);
+    }
+
+    return this.createAndStoreProvider(key, this.config.kubeConfig);
   }
 
   protected applyYAML(yamlData: string): k8s.yaml.ConfigGroup {

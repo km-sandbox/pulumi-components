@@ -32,6 +32,6 @@ export class GCPContainerRegistry extends AbstractContainerRegistry {
   }
 
   public get name(): Promise<string> {
-    return this.resolveResourceOutputProperty('Name', this.resource.name);
+    return this.promiseOf('Name', this.resource.name);
   }
 }

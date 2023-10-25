@@ -20,6 +20,8 @@ jobs:
         uses: ./.github/actions/setup
       - name: Lint
         uses: ./.github/actions/lint
+      - name: Unit Test
+        uses: ./.github/actions/unit-test
 
       - name: Merge Dependabot PRs
         uses: fastify/github-action-merge-dependabot@v3

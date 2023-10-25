@@ -41,13 +41,10 @@ export class GCPKubernetesCluster extends AbstractKubernetesCluster {
   }
 
   public get name(): Promise<string> {
-    return this.resolveResourceOutputProperty('Name', this.resource.name);
+    return this.promiseOf('Name', this.resource.name);
   }
 
   public getKubeConfig(): Promise<string> {
-    return this.resolveResourceOutputProperty(
-      'Kubeconfig',
-      this.resource.getKubeconfig()
-    );
+    return this.promiseOf('Kubeconfig', this.resource.getKubeconfig());
   }
 }

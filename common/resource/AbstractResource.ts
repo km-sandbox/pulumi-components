@@ -9,7 +9,7 @@ export abstract class AbstractResource {
 
   abstract get name(): Promise<string>;
 
-  protected resolveResourceOutputProperty<T>(
+  protected promiseOf<T>(
     property: string,
     resourceOutput: Output<T>
   ): Promise<T> {
