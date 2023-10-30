@@ -1,14 +1,16 @@
 import * as pulumi from '@pulumi/pulumi';
 
 type ResourceMockConfig = {
-  provider: string;
+  package: string;
+  module: string;
   type: string;
   mockResponse: {id: string; state: Record<string, unknown>};
 };
 
 type CallMockConfig = {
-  provider: string;
-  token: string;
+  package: string;
+  module: string;
+  function: string;
   mockResponse: unknown;
 };
 
@@ -17,20 +19,22 @@ type MockConfiguration = {
   callMocks?: CallMockConfig[];
 };
 
-function resourceMockIsEqualToArgs(
+function resourceMockIsTypeOfArgs(
   resourceMock: ResourceMockConfig,
   args: pulumi.runtime.MockResourceArgs
 ): boolean {
-  const resourceMockType = resourceMock.provider + ':' + resourceMock.type;
+  const resourceMockType =
+    resourceMock.package + ':' + resourceMock.module + ':' + resourceMock.type;
 
   return resourceMockType === args.type;
 }
 
-function callMockIsEqualToArgs(
+function callMockIsTypeOfArgs(
   callMock: CallMockConfig,
   args: pulumi.runtime.MockCallArgs
 ): boolean {
-  const callMockToken = callMock.provider + ':' + callMock.token;
+  const callMockToken =
+    callMock.package + ':' + callMock.module + ':' + callMock.function;
 
   return callMockToken === args.token;
 }
@@ -46,7 +50,7 @@ export function setResourceMocks(config: MockConfiguration = {}): void {
       };
 
       const mockConfig = config.resourceMocks?.find(rm =>
-        resourceMockIsEqualToArgs(rm, args)
+        resourceMockIsTypeOfArgs(rm, args)
       );
 
       return mockConfig?.mockResponse || defaultMockResourceResult;
@@ -55,7 +59,7 @@ export function setResourceMocks(config: MockConfiguration = {}): void {
       args: pulumi.runtime.MockCallArgs
     ): pulumi.runtime.MockCallResult => {
       const mockConfig = config.callMocks?.find(cm =>
-        callMockIsEqualToArgs(cm, args)
+        callMockIsTypeOfArgs(cm, args)
       );
 
       return mockConfig?.mockResponse || args.inputs;

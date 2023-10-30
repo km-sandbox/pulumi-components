@@ -72,8 +72,9 @@ describe('GCPKubernetesCluster', () => {
           setResourceMocks({
             resourceMocks: [
               {
-                provider: 'google-native',
-                type: 'container/v1beta1:Cluster',
+                package: 'google-native',
+                module: 'container/v1beta1',
+                type: 'Cluster',
                 mockResponse: {
                   id: `${config.name}-id`,
                   state: {

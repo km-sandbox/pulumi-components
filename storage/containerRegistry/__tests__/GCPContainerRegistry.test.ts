@@ -26,8 +26,9 @@ const defaultTestCase: TestCase = {
 const mockConfig = {
   resourceMocks: [
     {
-      provider: 'google-native',
-      type: 'artifactregistry/v1beta2:Repository',
+      package: 'google-native',
+      module: 'artifactregistry/v1beta2',
+      type: 'Repository',
       mockResponse: {
         id: 'my-repo-id',
         state: {

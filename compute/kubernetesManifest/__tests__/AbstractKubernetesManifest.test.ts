@@ -54,16 +54,18 @@ const defaultKubernetesManifestConfig: KubernetesManifestConfig = {
 const mockConfig = {
   resourceMocks: [
     {
-      provider: 'kubernetes',
-      type: 'kubernetes:yaml:ConfigGroup',
+      package: 'kubernetes',
+      module: 'yaml',
+      type: 'ConfigGroup',
       mockResponse: {
         id: 'configmap-id',
         state: {},
       },
     },
     {
-      provider: 'kubernetes',
-      type: 'pulumi:providers:kubernetes',
+      package: 'kubernetes',
+      module: 'providers',
+      type: 'kubernetes',
       mockResponse: {
         id: 'provider-id',
         state: {
@@ -120,8 +122,9 @@ describe('getProviderAndCreateItIfNotExists Method', () => {
         );
         const providerObject =
           await kubernetesManifest.getProviderAndCreateItIfNotExists();
+
         const provider: Provider = {
-          clusterName: await providerObject.cluster,
+          clusterName: await providerObject.clusterName,
           kubeConfig: await providerObject.kubeconfig,
         };
 
