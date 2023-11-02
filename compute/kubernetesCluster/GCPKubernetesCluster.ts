@@ -3,6 +3,7 @@ import {
   ReleaseChannelChannel,
 } from '@pulumi/google-native/container/v1beta1';
 
+import {DeferredResourceValue} from '../../common/resource';
 import {KubernetesClusterConfig} from './interfaces';
 import {AbstractKubernetesCluster} from './AbstractKubernetesCluster';
 
@@ -40,11 +41,11 @@ export class GCPKubernetesCluster extends AbstractKubernetesCluster {
     };
   }
 
-  public get name(): Promise<string> {
-    return this.promiseOf('Name', this.resource.name);
+  public get name(): DeferredResourceValue<string> {
+    return new DeferredResourceValue(this.resource.name);
   }
 
-  public getKubeConfig(): Promise<string> {
-    return this.promiseOf('Kubeconfig', this.resource.getKubeconfig());
+  public getKubeConfig(): DeferredResourceValue<string> {
+    return new DeferredResourceValue(this.resource.getKubeconfig());
   }
 }

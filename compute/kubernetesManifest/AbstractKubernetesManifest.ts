@@ -1,7 +1,12 @@
 import * as k8s from '@pulumi/kubernetes';
 
-import {AbstractResource} from '../../common/resource';
+import {
+  AbstractResource,
+  ResourceValue,
+  DirectResourceValue,
+} from '../../common/resource';
 import {KubernetesManifestConfig} from './interfaces';
+import {} from '../../common/resource/ResourceValue';
 
 export abstract class AbstractKubernetesManifest extends AbstractResource {
   protected readonly nameSuffix = 'manifest';
@@ -13,10 +18,9 @@ export abstract class AbstractKubernetesManifest extends AbstractResource {
     this.config = config;
   }
 
-  public get name(): Promise<string> {
-    return new Promise(resolve => {
-      resolve(this.getFullName(this.config.name));
-    });
+  public get name(): ResourceValue<string> {
+    const fullName = this.getFullName(this.config.name);
+    return new DirectResourceValue(fullName);
   }
 
   private isProviderExists(key: string): boolean {

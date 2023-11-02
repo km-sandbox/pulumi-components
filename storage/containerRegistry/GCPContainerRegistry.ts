@@ -1,5 +1,6 @@
 import {Repository} from '@pulumi/google-native/artifactregistry/v1beta2';
 
+import {DeferredResourceValue} from '../../common/resource';
 import {ContainerRegistryConfig} from './interfaces';
 import {AbstractContainerRegistry} from './AbstractContainerRegistry';
 
@@ -31,7 +32,7 @@ export class GCPContainerRegistry extends AbstractContainerRegistry {
     };
   }
 
-  public get name(): Promise<string> {
-    return this.promiseOf('Name', this.resource.name);
+  public get name(): DeferredResourceValue<string> {
+    return new DeferredResourceValue(this.resource.name);
   }
 }

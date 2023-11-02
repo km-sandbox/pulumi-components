@@ -1,1 +1,6 @@
-export {AbstractResource as AbstractResource} from './AbstractResource';
+export {AbstractResource} from './AbstractResource';
+export {
+  ResourceValue,
+  DirectResourceValue,
+  DeferredResourceValue,
+} from './ResourceValue';

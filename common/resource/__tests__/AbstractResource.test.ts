@@ -1,11 +1,11 @@
 import {describe, test, expect, beforeEach} from 'vitest';
 
-import {AbstractResource} from '../AbstractResource';
+import {AbstractResource, ResourceValue} from '../../common/resource';
 import {Output, output} from '@pulumi/pulumi';
 
 class TestableAbstractResource extends AbstractResource {
-  get name(): Promise<string> {
-    return Promise.resolve('mockName');
+  get name(): ResourceValue<string> {
+    return new ResourceValue('mockName');
   }
 
   public getFullName(name: string): string {
