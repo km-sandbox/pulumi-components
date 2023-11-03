@@ -1,7 +1,5 @@
 import {describe, test, expect, beforeEach} from 'vitest';
 
-import {Output, output} from '@pulumi/pulumi';
-
 import {AbstractResource} from '../AbstractResource';
 import {ResourceValue, DirectResourceValue} from '../ResourceValue';
 
