@@ -1,7 +1,10 @@
 import {ReleaseChannelChannel} from '@pulumi/google-native/container/v1beta1';
 import {describe, test, expect} from 'vitest';
 
-import {setResourceMocks} from '../../../__tests__/ResourceMock';
+import {
+  ExpectDeferredResourceValue,
+  setResourceMocks,
+} from '../../../__tests__';
 import {GCPKubernetesCluster} from '../GCPKubernetesCluster';
 import {KubernetesClusterConfig} from '../interfaces';
 
@@ -102,13 +105,13 @@ describe('GCPKubernetesCluster', () => {
 
           const actualParent = cluster['buildParentResource'](config);
           const actualLabels = cluster['buildResourceLabels'](config);
-          const actualName = await cluster.name;
-          // const actualKubeConfig = await cluster.getKubeConfig();
 
           expect(actualParent).toEqual(expectedParent);
           expect(actualLabels).toEqual(expectedLabels);
-          expect(actualName).toEqual(expectedName);
-          // expect(actualKubeConfig).toEqual(expectedKubeConfig);
+          new ExpectDeferredResourceValue(cluster.kubeConfig).toEqual(
+            expectedKubeConfig
+          );
+          new ExpectDeferredResourceValue(cluster.name).toEqual(expectedName);
         }
       );
     }

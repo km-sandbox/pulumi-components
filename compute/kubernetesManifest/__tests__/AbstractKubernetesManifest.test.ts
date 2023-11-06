@@ -1,7 +1,7 @@
-import {describe, test, expect, beforeAll} from 'vitest';
+import {describe, test, beforeAll} from 'vitest';
 import * as k8s from '@pulumi/kubernetes';
 
-import {setResourceMocks} from '../../../__tests__/ResourceMock';
+import {ExpectOutput, setResourceMocks} from '../../../__tests__';
 import {AbstractKubernetesManifest} from '../AbstractKubernetesManifest';
 import {KubernetesManifestConfig} from '../interfaces';
 
@@ -120,16 +120,15 @@ describe('getProviderAndCreateItIfNotExists Method', () => {
         const kubernetesManifest = new TestableAbstractKubernetesManifest(
           config
         );
-        const providerObject =
+        const providerResource: k8s.Provider =
           await kubernetesManifest.getProviderAndCreateItIfNotExists();
 
-        const provider: Provider = {
-          clusterName: await providerObject.clusterName,
-          kubeConfig: await providerObject.kubeconfig,
-        };
-
-        // expect(provider.clusterName).toEqual(expectedProvider.clusterName);
-        expect(provider.kubeConfig).toEqual(expectedProvider.kubeConfig);
+        new ExpectOutput(providerResource.kubeconfig).toEqual(
+          expectedProvider.kubeConfig
+        );
+        new ExpectOutput(providerResource.cluster).toEqual(
+          expectedProvider.clusterName
+        );
       });
     }
   );

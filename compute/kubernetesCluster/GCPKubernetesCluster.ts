@@ -45,7 +45,7 @@ export class GCPKubernetesCluster extends AbstractKubernetesCluster {
     return new DeferredResourceValue(this.resource.name);
   }
 
-  public getKubeConfig(): DeferredResourceValue<string> {
+  public get kubeConfig(): DeferredResourceValue<string> {
     return new DeferredResourceValue(this.resource.getKubeconfig());
   }
 }

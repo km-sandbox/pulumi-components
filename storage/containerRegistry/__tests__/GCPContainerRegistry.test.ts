@@ -1,8 +1,11 @@
-import {describe, test, expect, beforeAll} from 'vitest';
+import {describe, test, beforeAll} from 'vitest';
 
+import {
+  ExpectDeferredResourceValue,
+  setResourceMocks,
+} from '../../../__tests__';
 import {GCPContainerRegistry} from '../GCPContainerRegistry';
 import {ContainerRegistryConfig} from '../interfaces';
-import {setResourceMocks} from '../../../__tests__/ResourceMock';
 
 interface TestCase {
   name: string;
@@ -54,9 +57,8 @@ describe('GCPContainerRegistry Constructor', () => {
   testCases.forEach(({name, config, expectedName}) => {
     test.concurrent(name, async () => {
       const registry = new GCPContainerRegistry(config);
-      const actualName = await registry.name;
 
-      expect(actualName).toEqual(expectedName);
+      new ExpectDeferredResourceValue(registry.name).toEqual(expectedName);
     });
   });
 });

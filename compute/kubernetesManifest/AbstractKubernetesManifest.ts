@@ -36,6 +36,7 @@ export abstract class AbstractKubernetesManifest extends AbstractResource {
     kubeConfig: string
   ): k8s.Provider {
     const provider = new k8s.Provider(key, {kubeconfig: kubeConfig});
+    provider.getProvider;
     AbstractKubernetesManifest.providers[key] = provider;
     return provider;
   }

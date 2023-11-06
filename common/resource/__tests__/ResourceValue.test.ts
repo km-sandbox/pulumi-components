@@ -2,6 +2,7 @@ import {describe, test, expect} from 'vitest';
 import {Output} from '@pulumi/pulumi';
 
 import {DeferredResourceValue, DirectResourceValue} from '../ResourceValue';
+import {ExpectDeferredResourceValue} from '../../../__tests__/ExpectedDeferredResourceValue';
 
 describe('Testing DirectResourceValue', () => {
   const testCases = [
@@ -28,28 +29,31 @@ describe('Testing DeferredResourceValue', () => {
 
   testCases.forEach(({name, value, type}) => {
     test.concurrent(name, async () => {
-      let deferredVal: DeferredResourceValue<unknown>;
+      let deferredValue: DeferredResourceValue<unknown>;
 
       switch (type) {
         case 'number': {
           const outputValue = Output.create(value as number);
-          deferredVal = new DeferredResourceValue<number>(outputValue);
+          deferredValue = new DeferredResourceValue<number>(outputValue);
 
-          expect(deferredVal.get()).toEqual(outputValue);
+          expect(deferredValue.get()).toEqual(outputValue);
+          new ExpectDeferredResourceValue(deferredValue).toEqual(value);
           break;
         }
         case 'string': {
           const outputValue = Output.create(value as string);
-          deferredVal = new DeferredResourceValue<string>(outputValue);
+          deferredValue = new DeferredResourceValue<string>(outputValue);
 
-          expect(deferredVal.get()).toEqual(outputValue);
+          expect(deferredValue.get()).toEqual(outputValue);
+          new ExpectDeferredResourceValue(deferredValue).toEqual(value);
           break;
         }
         case 'boolean': {
           const outputValue = Output.create(value as boolean);
-          deferredVal = new DeferredResourceValue<boolean>(outputValue);
+          deferredValue = new DeferredResourceValue<boolean>(outputValue);
 
-          expect(deferredVal.get()).toEqual(outputValue);
+          expect(deferredValue.get()).toEqual(outputValue);
+          new ExpectDeferredResourceValue(deferredValue).toEqual(value);
           break;
         }
         default:
