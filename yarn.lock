@@ -788,10 +788,10 @@
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
-"@pulumi/kubernetes@^4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@pulumi/kubernetes/-/kubernetes-4.5.3.tgz#0c0bafa326c53df63d3054480a0b6141d33679ac"
-  integrity sha512-KD/AYI0oi+WLkotcWj3Xg1m4hWlHZkC6u461epVlCLgMxjEQRZuQkM5K0X8mCtTNzeW2dqwr7wcW00rxTnK5JA==
+"@pulumi/kubernetes@^4.5.4":
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/@pulumi/kubernetes/-/kubernetes-4.5.4.tgz#edee1848ab63e9b68135f67a4dbbcb4188b86519"
+  integrity sha512-QyufXL/MV6EVXG5sYgvmT87r/6DYigv4uxQ/KvCisSBvkGr2X7wBgWEBlHh77TlZDA5XP+imKBj84D0M8/n2Gg==
   dependencies:
     "@pulumi/pulumi" "^3.25.0"
     "@types/glob" "^5.0.35"
