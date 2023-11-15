@@ -23,7 +23,7 @@
     "@pulumi/google-native": "^0.31.1",
     "@pulumi/kubernetes": "^4.5.4",
     "@pulumi/pulumi": "^3.93.0",
-    "axios": "^1.6.1",
+    "axios": "^1.6.2",
     "rimraf": "^5.0.5"
   },
   "resolutions": {
