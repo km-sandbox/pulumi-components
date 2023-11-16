@@ -19,7 +19,7 @@
     "vitest": "^0.34.6"
   },
   "dependencies": {
-    "@pulumi/aws": "^6.8.0",
+    "@pulumi/aws": "^6.9.0",
     "@pulumi/google-native": "^0.31.1",
     "@pulumi/kubernetes": "^4.5.4",
     "@pulumi/pulumi": "^3.94.0",
