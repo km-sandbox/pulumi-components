@@ -189,10 +189,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.50.0.tgz#9e93b850f0f3fa35f5fa59adfd03adae8488e484"
   integrity sha512-NCC3zz2+nvYd+Ckfh87rA47zfu2QsQpvc6k1yzTk+b9KzRj0wkGa8LSoGOXN6Zv4lRf/EIoZ80biDh9HOI+RNQ==
 
-"@grpc/grpc-js@1.9.6":
-  version "1.9.6"
-  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.9.6.tgz#c64a2db3cb1c73939d3d666fb1339775813c1cd8"
-  integrity sha512-yq3qTy23u++8zdvf+h4mz4ohDFi681JAkMZZPTKh8zmUVh0AKLisFlgxcn22FMNowXz15oJ6pqgwT7DJ+PdJvg==
+"@grpc/grpc-js@^1.9.14":
+  version "1.9.14"
+  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.9.14.tgz#236378822876cbf7903f9d61a0330410e8dcc5a1"
+  integrity sha512-nOpuzZ2G3IuMFN+UPPpKrC6NsLmWsTqSsm66IRfnBt1D4pwTqE27lmbpcPM+l2Ua4gE7PfjRHI6uedAy7hoXUw==
   dependencies:
     "@grpc/proto-loader" "^0.7.8"
     "@types/node" ">=12.12.47"
@@ -801,12 +801,12 @@
     shell-quote "^1.6.1"
     tmp "^0.0.33"
 
-"@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.103.1", "@pulumi/pulumi@^3.25.0":
-  version "3.103.1"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.103.1.tgz#a71d00aacfc2602d89b6cdf721957c6850a0508f"
-  integrity sha512-bv87x4vcjHs09Yss8WWJkbWxf4sABVXPbLPrHn5SOhng4TaGtFejDaDzgTaevOHCchJJNyXpPqTYzKqc2WmeEQ==
+"@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.104.1", "@pulumi/pulumi@^3.25.0":
+  version "3.104.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.104.1.tgz#670fd1e900531cf3c517869dae237702b2004fb5"
+  integrity sha512-ivc6UDlgQQxYQw5/qxVROAxkumpVfPM0msMqcvP+A2eDpUIf9FpKTbsYHVaOaMrGtNxipkah0SECw8GbMhdZjg==
   dependencies:
-    "@grpc/grpc-js" "1.9.6"
+    "@grpc/grpc-js" "^1.9.14"
     "@logdna/tail-file" "^2.0.6"
     "@opentelemetry/api" "^1.2.0"
     "@opentelemetry/exporter-zipkin" "^1.6.0"
