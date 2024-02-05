@@ -12,7 +12,7 @@
   ],
   "devDependencies": {
     "@types/node": "^20",
-    "@vitest/coverage-v8": "^0.34.6",
+    "@vitest/coverage-v8": "^1.2.2",
     "gts": "^5.2.0",
     "semantic-release": "^22.0.12",
     "typescript": "^5.3.3",
