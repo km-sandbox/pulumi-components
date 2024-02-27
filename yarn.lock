@@ -806,10 +806,10 @@
   dependencies:
     "@pulumi/pulumi" "^3.0.0"
 
-"@pulumi/kubernetes@^4.8.0":
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/kubernetes/-/kubernetes-4.8.0.tgz#b56d1e5d757f1e3500179bc73247cbcc4161294d"
-  integrity sha512-3HCllk/IcGbKZk2eE4KDirrIQ7OcQ5VWXzifAuHw3HNYyOreaouYl+21TX6Mu6Lv9m5NesOOevI2naU9voYY/Q==
+"@pulumi/kubernetes@^4.8.1":
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/kubernetes/-/kubernetes-4.8.1.tgz#b618a114379c2666ae8e7106fe226bd0a96536a0"
+  integrity sha512-epO776SvEtfzISYnqTdrSNmr+fbNoFszLNsIcvbw4ZhstbTeyJSUkUmcOlwfft5BHg1KF95duGq0+cauhuKTag==
   dependencies:
     "@pulumi/pulumi" "^3.25.0"
     "@types/glob" "^5.0.35"
