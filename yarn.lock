@@ -831,10 +831,10 @@
     shell-quote "^1.6.1"
     tmp "^0.0.33"
 
-"@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.108.0", "@pulumi/pulumi@^3.25.0":
-  version "3.108.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.108.0.tgz#f7e7db554c5dad332bf3918e967fbec657e10484"
-  integrity sha512-NkGvmUE/mVNPIRkwNbKvDf8HH5fnNSnMt+c9iTsnLGLzpsIE5N9iYl7arnRLQdDGvraboUF+7aO/dSRnnCEI7w==
+"@pulumi/pulumi@^3.0.0", "@pulumi/pulumi@^3.108.1", "@pulumi/pulumi@^3.25.0":
+  version "3.108.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.108.1.tgz#1880d0c93d8be05234e8cc31052a95a2e6d46152"
+  integrity sha512-CJeYoleoRZ+uDN38xJ9GaRSzU3BIpgJrRdBRBXUEjKF3OYJedfFEp8PvmPvbFc7/IYo91Gc2P5wcDWRvRSdZJw==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"
@@ -848,7 +848,6 @@
     "@opentelemetry/sdk-trace-node" "^1.6.0"
     "@opentelemetry/semantic-conventions" "^1.6.0"
     "@pulumi/query" "^0.3.0"
-    "@types/glob" "^8.1.0"
     "@types/google-protobuf" "^3.15.5"
     "@types/semver" "^7.5.6"
     "@types/tmp" "^0.2.6"
@@ -1040,7 +1039,7 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.3.9.tgz#144d762491967db8c6dea38e03d2206c2623feec"
   integrity sha512-69TtiDzu0bcmKQv3yg1Zx409/Kd7r0b5F1PfpYJfSHzLGtB53547V4u+9iqKYsTu/O2ai6KTb0TInNpvuQ3qmg==
 
-"@types/glob@", "@types/glob@^5.0.35", "@types/glob@^8.1.0":
+"@types/glob@", "@types/glob@^5.0.35":
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-8.1.0.tgz#b63e70155391b0584dce44e7ea25190bbc38f2fc"
   integrity sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==
