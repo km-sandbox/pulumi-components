@@ -22,7 +22,7 @@
     "@pulumi/aws": "^6.31.1",
     "@pulumi/google-native": "^0.32.0",
     "@pulumi/kubernetes": "^4.11.0",
-    "@pulumi/pulumi": "^3.113.0",
+    "@pulumi/pulumi": "^3.113.3",
     "axios": "^1.6.8",
     "rimraf": "^5.0.5"
   },
